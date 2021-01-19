@@ -1,7 +1,7 @@
 # Form-Validation-Javascript-
 Complete Form Validation in Javascript
 
-This project uses HTML, bootstrap and Javascript to utilizes form validation to ensure the user fills out the form properly.
+This project uses HTML, bootstrap and Javascript to utilize form validation to ensure the user fills out the form properly.
 
 Following are form validation requirements for submission of form:
 

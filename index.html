@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Javascript Validation</title>
+</head>
+
+<body>
+    <div class="container">
+        <br />
+        <h1 class="text-success text-center">
+            Complete Form Validation in Javascript
+        </h1>
+        <br />
+        <div class="col-lg-8 m-auto d-block">
+            <form action="#" onsubmit="return validation()" class="bg-light">
+                <div class="form-group">
+                    <label>Username: </label>
+                    <input type="text" name="user" class="form-control" id="user" autocomplete="off" />
+                    <span id="username" class="text-danger font-weight-bold"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Password: </label>
+                    <input type="text" name="pass" class="form-control" id="pass" autocomplete="off" />
+                    <span id="passwords" class="text-danger font-weight-bold"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Confirm Password: </label>
+                    <input type="text" name="pass" class="form-control" id="conpass" autocomplete="off" />
+                    <span id="confirmpass" class="text-danger font-weight-bold"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Cell Phone Number: </label>
+                    <input type="text" name="cell" class="form-control" id="cellnumber" autocomplete="off" />
+                    <span id="cellno" class="text-danger font-weight-bold"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Email: </label>
+                    <input type="text" name="email" class="form-control" id="email" autocomplete="off" />
+                    <span id="emailids" class="text-danger font-weight-bold"></span>
+                </div>
+
+                <input type="submit" name="sumbit" value="submit" class="btn btn-success">
+            </form>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function validation() {
+
+            const user = document.getElementById('user').value;
+            const pass = document.getElementById('pass').value;
+            const conpass = document.getElementById('conpass').value;
+            const cellnumber = document.getElementById('cellnumber').value;
+            const email = document.getElementById('email').value;
+
+            // this condition checks if input field is empty and displays message if it is
+            if (user === "") {
+                document.getElementById('username').innerHTML = " ** Please fill the username field";
+                return false;
+            }
+
+            // this condition checks if input value is less than 2 or greater than 20
+            // if either condition evaluates to true, code will execute 
+            if ((user.length <= 2) || (user.length > 20)) {
+                document.getElementById('username').innerHTML = " ** user length must be between 2 and 20";
+                return false;
+            }
+
+            // to prevent user from entering numbers or digits 
+            if (!isNaN(user)) {
+                document.getElementById('username').innerHTML = " ** only charachters are allowed";
+                return false;
+            }
+
+            if (pass === "") {
+                document.getElementById('passwords').innerHTML = " ** Please fill the password field";
+                return false;
+            }
+
+            // password length must be less than 5 or greater than 20
+            if ((pass.length < 5) || (pass.length > 20)) {
+                document.getElementById('passwords').innerHTML = " ** password length must be between 5 and 20 characters";
+                return false;
+            }
+
+            if (pass !== conpass) {
+                document.getElementById('confirmpass').innerHTML = " ** password are not matching ";
+                return false;
+            }
+
+            if (conpass === "") {
+                document.getElementById('confirmpass').innerHTML = " ** Please fill the confirm password field";
+                return false;
+            }
+
+            if (cellnumber === "") {
+                document.getElementById('cellno').innerHTML = " ** Please fill the cell phone number field";
+                return false;
+            }
+
+            // to make sure user enters phone number only and not any characters 
+            if (isNaN(cellnumber)) {
+                document.getElementById('cellno').innerHTML = " ** user must write digits only not characters ";
+                return false;
+            }
+
+            // cell phone number must be 10 digits 
+            if (cellnumber.length !== 10) {
+                document.getElementById('cellno').innerHTML = " ** cell phone number must write 10 digits ";
+                return false;
+            }
+
+            if (email === "") {
+                document.getElementById('emailids').innerHTML = " ** Please fill the email id field";
+                return false;
+            }
+
+            if (email.indexOf('@') <= 0) {
+                document.getElementById('emailids').innerHTML = " ** @ Invalid Position ";
+                return false;
+            }
+
+
+            if ((email.charAt(email.length - 4) !== '.') && (email.charAt(email.length - 3) != '.')) {
+                document.getElementById('emailids').innerHTML = " ** . Invalid Position ";
+                return false;
+
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
